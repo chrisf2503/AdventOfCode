@@ -15,25 +15,29 @@
 */
 int Trebuchet(std::vector<std::string> & inputs){
     int ans = 0;
-    //we first want to go over the list 
+    //this will be keep track of our first an last digit number
     std::string num = "";
+    //we first want to go over the list 
     for(int i = 0; i < inputs.size(); i++){
-        //when we get each string we want to find the first non_alphabetic character
         std::string s = inputs[i];
         int j;
+        //when we get each string we want to find the first non_alphabetic character
         for(j = 0; j < s.length(); j++){
             if(!isalpha(s[j])){
                 num += s[j];
                 break;
             }
         }
+        //Now we want to get the last non_alphabetic character
         for(j = s.length()-1; j >= 0; j--){
             if(!isalpha(s[j])){
                 num += s[j];
                 break;
             }
         }
+        //convert string to an int
         ans += stoi(num);
+        //reset back a empty string
         num = "";
     }    
     return ans;
