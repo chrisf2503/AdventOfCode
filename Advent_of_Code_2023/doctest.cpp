@@ -10,3 +10,31 @@ TEST_CASE("Trebuchet test case"){
     std::vector<std::string> list3 = {"324filr02fsrlin23fgrs9", "getThisnumber2", "424234324532", "filnf3fnlrnflin49fslinfrs0"};
     CHECK(Trebuchet(list3) == 133);
 }
+TEST_CASE("Testing CubeConundrum"){
+    std::vector<std::string> list1 = {"Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
+"Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue",
+"Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red",
+"Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red",
+"Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"};
+    //CHECK(CubeConundrum(list1) == 8);
+}
+TEST_CASE("getting sets"){
+    std::string set1 = "Game 5: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green";
+    std::string get_sets_list = set1.substr(set1.find(":")+2);
+    std::vector<std::string> sets = get_sets(get_sets_list);
+    CHECK(sets[0] == "3 blue, 4 red");
+    CHECK(sets[1] == "1 red, 2 green, 6 blue");
+    CHECK(sets[2] == "2 green");
+    CHECK(sets.size() == 3);
+    std::string set2 = "Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue";
+    get_sets_list = set2.substr(set1.find(":")+2);
+    sets = get_sets(get_sets_list);
+    CHECK(sets[0] == "1 blue, 2 green");
+    CHECK(sets[1] == "3 green, 4 blue, 1 red");
+    CHECK(sets[2] == "1 green, 1 blue");
+    CHECK(sets.size() == 3);
+}
+TEST_CASE("is_valid function"){
+    std::string set1 = "Game 5: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green";
+    std::string get_sets_list = set1.substr(set1.find(":")+2);
+}

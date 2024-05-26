@@ -2,6 +2,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <unordered_map>
 /**
  * Given a list of string with random characters, (containing letters an numbers), for each 
  * string we want to get the first an last numbers, convert it to a int, repeat this until 
@@ -41,4 +42,34 @@ int Trebuchet(std::vector<std::string> & inputs){
         num = "";
     }    
     return ans;
+}
+//Day 2
+void is_val(std::string & sets);
+//Formating Example -> Game 9: 1 green, 5 blue; 4 blue; 2 red, 1 blue
+std::unordered_map<std::string, int> bag_contains = {{"red",12},{"green", 13},{"blue", 14}}; 
+int CubeConundrum(std::vector<std::string> & inputs){
+    int ans = 0;
+    std::string index = "";
+    //We want to get the set
+    std::string sets = "";
+    //First we want to be able to go through the list of games
+    for(int i = 0; i < inputs.size(); i++){
+        //Lets get the substring of the sets (1 green, 5 blue; 4 blue; 2 red, 1 blue)
+        std::string sets = inputs[i].substr(inputs[i].find(":")+2);
+        
+    }
+    return ans;
+}
+//Here we want to get a list of cube number an color by sets, we know its a set when a ';' seperates them
+std::vector<std::string> get_sets(std::string &sets){
+    std::vector<std::string> set;
+    for(int i = 0; i < sets.length(); i++){
+        if(sets[i] == ';'){
+            set.push_back(sets.substr(0,sets.find(";")));
+            sets = sets.substr(sets.find(";")+2);
+            i = sets.find(" ");
+        }
+    }
+    set.push_back(sets);
+    return set;
 }
