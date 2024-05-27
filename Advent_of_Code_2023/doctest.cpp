@@ -16,25 +16,49 @@ TEST_CASE("Testing CubeConundrum"){
 "Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red",
 "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red",
 "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"};
-    //CHECK(CubeConundrum(list1) == 8);
+    CHECK(list1.size()==5);
+    CHECK(CubeConundrum(list1) == 8);
 }
 TEST_CASE("getting sets"){
     std::string set1 = "Game 5: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green";
     std::string get_sets_list = set1.substr(set1.find(":")+2);
-    std::vector<std::string> sets = get_sets(get_sets_list);
+    std::vector<std::string> sets = get_sets(get_sets_list,';');
     CHECK(sets[0] == "3 blue, 4 red");
     CHECK(sets[1] == "1 red, 2 green, 6 blue");
     CHECK(sets[2] == "2 green");
     CHECK(sets.size() == 3);
     std::string set2 = "Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue";
     get_sets_list = set2.substr(set1.find(":")+2);
-    sets = get_sets(get_sets_list);
+    sets = get_sets(get_sets_list,';');
     CHECK(sets[0] == "1 blue, 2 green");
     CHECK(sets[1] == "3 green, 4 blue, 1 red");
     CHECK(sets[2] == "1 green, 1 blue");
     CHECK(sets.size() == 3);
+    std::string s1 = "1 blue, 2 green";
+    std::vector<std::string> num_color = get_sets(s1, ',');
+    CHECK(num_color[0] == "1 blue");
+    CHECK(num_color[1] == "2 green");
+    CHECK(num_color.size()==2);
+    std::string s2 = "3 green, 59 red";
+    num_color = get_sets(s2,',');
+    CHECK(num_color[0] == "3 green");
+    CHECK(num_color[1] == "59 red");
+    CHECK(num_color.size()==2);
 }
 TEST_CASE("is_valid function"){
     std::string set1 = "Game 5: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green";
     std::string get_sets_list = set1.substr(set1.find(":")+2);
+    CHECK(is_val(get_sets_list));
+    std::string set2 = "Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red";
+    get_sets_list = set2.substr(set2.find(":")+2);
+    CHECK(!is_val(get_sets_list));
+    std::string set3 = "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red";
+    get_sets_list = set3.substr(set3.find(":")+2);
+    CHECK(!is_val(get_sets_list));
+    std::string set4 = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green";
+    get_sets_list = set4.substr(set4.find(":")+2);
+    CHECK(is_val(get_sets_list));
+    std::string set5 = "Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue";
+    get_sets_list = set5.substr(set5.find(":")+2);
+    CHECK(is_val(get_sets_list));
 }

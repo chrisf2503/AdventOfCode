@@ -44,7 +44,7 @@ int Trebuchet(std::vector<std::string> & inputs){
     return ans;
 }
 //Day 2
-void is_val(std::string & sets);
+bool is_val(std::string & sets);
 //Formating Example -> Game 9: 1 green, 5 blue; 4 blue; 2 red, 1 blue
 std::unordered_map<std::string, int> bag_contains = {{"red",12},{"green", 13},{"blue", 14}}; 
 int CubeConundrum(std::vector<std::string> & inputs){
@@ -55,21 +55,39 @@ int CubeConundrum(std::vector<std::string> & inputs){
     //First we want to be able to go through the list of games
     for(int i = 0; i < inputs.size(); i++){
         //Lets get the substring of the sets (1 green, 5 blue; 4 blue; 2 red, 1 blue)
-        std::string sets = inputs[i].substr(inputs[i].find(":")+2);
-        
+        sets = inputs[i].substr(inputs[i].find(":")+2);
+        //if the set is valid then we want to get the ID number an add it to ans
+        if(is_val(sets)){
+            ans += (i+1);
+        }
     }
     return ans;
 }
 //Here we want to get a list of cube number an color by sets, we know its a set when a ';' seperates them
-std::vector<std::string> get_sets(std::string &sets){
+std::vector<std::string> get_sets(std::string &sets, char sep){
     std::vector<std::string> set;
     for(int i = 0; i < sets.length(); i++){
-        if(sets[i] == ';'){
-            set.push_back(sets.substr(0,sets.find(";")));
-            sets = sets.substr(sets.find(";")+2);
-            i = sets.find(" ");
+        if(sets[i] == sep){
+            set.push_back(sets.substr(0,sets.find(sep)));
+            sets = sets.substr(sets.find(sep)+2);
+            i = sets.find(" ")+4;
         }
     }
     set.push_back(sets);
     return set;
+}
+bool is_val(std::string & sets){
+    std::vector<std::string> set = get_sets(sets,';');
+    for(int i = 0; i < set.size(); i++){
+        std::vector<std::string> num_and_color = get_sets(set[i],',');
+        for(int j = 0; j < num_and_color.size(); j++){
+            std::string num = num_and_color[j].substr(0,num_and_color[j].find(" "));
+            int n = stoi(num);
+            num_and_color[j] = num_and_color[j].substr(num_and_color[j].find(" ")+1);
+            if(n > bag_contains[num_and_color[j]]){
+                return false;
+            }
+        }
+    }
+    return true;
 }
