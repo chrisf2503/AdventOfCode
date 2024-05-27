@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <unordered_map>
+#include <cmath>
 /**
  * Given a list of string with random characters, (containing letters an numbers), for each 
  * string we want to get the first an last numbers, convert it to a int, repeat this until 
@@ -87,4 +88,37 @@ bool is_val(std::string & sets){
         }
     }
     return true;
+}
+
+//Day 2 part 2:
+int get_multi(std::string & sets);
+int CubeConundrumPart2(std::vector<std::string> & inputs){
+    int ans = 0;
+    std::string sets = "";
+    for(int i = 0; i < inputs.size(); i++){
+        sets = inputs[i].substr(inputs[i].find(":")+2);
+        ans += get_multi(sets);
+    }
+    return ans;
+}
+
+int get_multi(std::string & sets){
+    //We will use a hash map in order to do comparison
+    std::unordered_map<std::string, int> max = {{"red", 0},{"blue",0},{"green",0}};
+    std::vector<std::string> set = get_sets(sets, ';');
+    for(int i = 0; i < set.size(); i++){
+        std::vector<std::string> num_and_color = get_sets(set[i],',');
+        for(int j = 0; j < num_and_color.size(); j++){
+            std::string num = num_and_color[j].substr(0,num_and_color[j].find(" "));
+            int n = stoi(num);
+            num_and_color[j] = num_and_color[j].substr(num_and_color[j].find(" ")+1);
+            //we will check which number is the max an set it to the hashmap
+            max[num_and_color[j]] = std::max(n,max[num_and_color[j]]);
+        }
+    }
+    int multi = 1;
+    for(auto get: max){
+        multi *= get.second;
+    }
+    return multi;
 }

@@ -74,3 +74,33 @@ We first want to go through each set an get the color then the number that is as
 Then we want to be able to check if it does surpass the number the color was assigned to
 
 If it does then we can say this game isnt valid an move on to the next game, but if its valid when we can sum up the Id numbers
+
+# Cube Conundrum (Day 2 part 2)
+
+Now using the same inputs, we want to be able to get the max value for each color cube, then we want to multiply all the max int an them sum everything up
+
+例：
+
+Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green -> red: 4, blue: 6, green: 2 are the max
+
+Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue -> red: 1, blue: 4, green: 3 are the max
+
+Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red -> red: 20, blue: 6, green: 8 are the max
+
+Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red -> red: 14, blue: 15, green: 3 are the max
+
+Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green -> red: 6, blue: 2, green: 3 are the max
+
+Now is we multiply we would get 
+
+Game 1: 48
+
+Game 2: 12
+
+Game 3: 1560
+
+Game 4: 630
+
+Game 5: 36
+
+Now is we sum all the game then we would get 69110

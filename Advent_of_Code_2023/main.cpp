@@ -35,4 +35,6 @@ int main(){
     std::vector<std::string> day2_input = readFileByLine("CubeConundrumInputs.txt");
     ans = CubeConundrum(day2_input);
     std::cout << "Day 2:\n\tCube Conundrum Ans: " << ans << std::endl;
+    ans = CubeConundrumPart2(day2_input);
+    std::cout << "Day 2 part 2:\n\tCube Conundrum part 2 Ans: "<< ans << std::endl;
 }
