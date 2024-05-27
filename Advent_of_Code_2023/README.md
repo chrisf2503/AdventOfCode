@@ -44,3 +44,5 @@ We are left with Games 1,2,5, Therefore if we sum the ID up, we will get 8
 We first want to go through each set an get the color then the number that is assicated with it
 
 Then we want to be able to check if it does surpass the number the color was assigned to
+
+If it does then we can say this game isnt valid an move on to the next game, but if its valid when we can sum up the Id numbers
