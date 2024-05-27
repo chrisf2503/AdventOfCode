@@ -104,3 +104,7 @@ Game 4: 630
 Game 5: 36
 
 Now is we sum all the game then we would get 69110
+
+# Day 3: Gear Ratios
+
+(under progress...)
