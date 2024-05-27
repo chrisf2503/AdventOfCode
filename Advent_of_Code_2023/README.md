@@ -1,12 +1,20 @@
 # Introduction
 Here I will be posting my solution of advent of code follow by some test cases in order to check for basic case.
-Here I will be using basic doc testing and will be coming each one day at a time
+
+I will be using basic doc testing and will be coming each one day at a time
+
 I will also post my explaination an my thought process an try to commonent what each line of code does an reason behind it. 
+
 In order to run doctest do the following command 
+
 1. make doctest
+
 2. ./doctest
+
 In order to get the answer of the inputs that were provided for me, you want to do the following
+
 1. make main
+
 2. ./main
 
 # Trebuchet (Day 1)
