@@ -49,14 +49,11 @@ bool is_val(std::string & sets);
 std::unordered_map<std::string, int> bag_contains = {{"red",12},{"green", 13},{"blue", 14}}; 
 int CubeConundrum(std::vector<std::string> & inputs){
     int ans = 0;
-    std::string index = "";
     //We want to get the set
     std::string sets = "";
     //First we want to be able to go through the list of games
     for(int i = 0; i < inputs.size(); i++){
-        //Lets get the substring of the sets (1 green, 5 blue; 4 blue; 2 red, 1 blue)
         sets = inputs[i].substr(inputs[i].find(":")+2);
-        //if the set is valid then we want to get the ID number an add it to ans
         if(is_val(sets)){
             ans += (i+1);
         }
@@ -70,7 +67,7 @@ std::vector<std::string> get_sets(std::string &sets, char sep){
         if(sets[i] == sep){
             set.push_back(sets.substr(0,sets.find(sep)));
             sets = sets.substr(sets.find(sep)+2);
-            i = sets.find(" ")+4;
+            i = sets.find(" ")+3;
         }
     }
     set.push_back(sets);
