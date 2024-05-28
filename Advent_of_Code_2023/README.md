@@ -107,4 +107,38 @@ Now is we sum all the game then we would get 69110
 
 # Day 3: Gear Ratios
 
-(under progress...)
+You given a list of string that contains the following:
+例：
+                         0  1  2  3  4  5  6  7  8  9
+0   467..114..          [4][6][7][.][.][1][1][4][.][.]
+1   ...*......          [.][.][.][*][.][.][.][.][.][.]
+2   ..35..633.          [.][.][3][5][.][.][6][3][3][.]
+3   ......#...          [.][.][.][.][.][.][#][.][.][.]
+4   617*......          [6][1][7][*][.][.][.][.][.][.]
+5   .....+.58.          [.][.][.][.][.][+][.][5][8][.]
+6   ..592.....          [.][.][5][9][2][.][.][.][.][.]
+7   ......755.          [.][.][.][.][.][.][7][5][5][.]
+8   ...$.*....          [.][.][.][$][.][*][.][.][.][.]
+9   .664.598..          [.][6][6][4][.][5][9][8][.][.]
+
+(This could be seen as a 2d maxtrix)
+
+We want to be able to sum up all the number when
+
+1. any number abjacent to a symbol 
+
+2. even diagonally to a symbol
+
+This rule apply only when its a symbol is not a period
+
+説明：
+
+On line 0, number 467 is diagonally across from the '*' because the number 7 is a row and col more then the *, therefore we can sum it up
+
+How ever number 114 is not near any symbol, that is not a symbol, therefore we can not sum it up
+
+Samething could be said with number 58 (line 5) where its 1 col off from the '+' symbol 
+
+Now if were to sum up all number that are abjacent an even diagonally to a symbol that is not a '.', then we would get 4361
+
+Therefore we want check if a number (any number), is diagonally/horizontally/vertically next to a symbol that is not a '.'
